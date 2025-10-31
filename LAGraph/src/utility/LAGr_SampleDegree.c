@@ -21,7 +21,10 @@
 #define LG_FREE_ALL LAGraph_Free ((void **) &samples, NULL) ;
 
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 int LAGr_SampleDegree
 (
     // output:
@@ -114,3 +117,7 @@ int LAGr_SampleDegree
     LG_FREE_ALL ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

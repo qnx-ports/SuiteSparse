@@ -68,7 +68,10 @@
 }
 
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #if defined ( GRAPHBLAS_HAS_CUDA )
 
 //------------------------------------------------------------------------------

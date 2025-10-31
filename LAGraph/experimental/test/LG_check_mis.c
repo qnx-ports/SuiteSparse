@@ -29,7 +29,10 @@
 
 #include "LG_internal.h"
 #include "LG_test.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 int LG_check_mis        // check if iset is a valid MIS of A
 (
     GrB_Matrix A,
@@ -125,3 +128,7 @@ int LG_check_mis        // check if iset is a valid MIS of A
     printf ("\n") ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

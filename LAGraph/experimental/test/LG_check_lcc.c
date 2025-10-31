@@ -38,7 +38,10 @@
 #include "LG_test.h"
 #include "LG_test.h"
 #include "LG_Xtest.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 // assumes that the indices array is sorted
 GrB_Index find(const GrB_Index* indices, GrB_Index n, GrB_Index index) {
     GrB_Index i = 0, j = n, h;
@@ -199,3 +202,7 @@ int LG_check_lcc(
     return (GrB_NOT_IMPLEMENTED) ;
 #endif
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

@@ -36,6 +36,11 @@
 #undef  LG_FREE_ALL
 #define LG_FREE_ALL ;
 
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
+
 static GrB_Info LG_augment_maxflow
 (
     double *f,                  // total maxflow from src to sink
@@ -1121,3 +1126,7 @@ int LAGr_MaxFlow
   return GrB_NOT_IMPLEMENTED ;
 #endif
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

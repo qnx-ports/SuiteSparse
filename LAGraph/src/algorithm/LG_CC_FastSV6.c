@@ -54,7 +54,10 @@
 
 #define LG_FREE_ALL ;
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #if LAGRAPH_SUITESPARSE
 
 //==============================================================================
@@ -756,3 +759,7 @@ int LG_CC_FastSV6           // SuiteSparse:GraphBLAS method, with GxB extensions
     return (GrB_NOT_IMPLEMENTED) ;
 #endif
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

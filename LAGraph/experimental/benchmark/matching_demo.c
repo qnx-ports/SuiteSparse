@@ -35,7 +35,10 @@ NOTE: When complete, prints out the matching vector and E matrix of the input gr
 #include "../../src/benchmark/LAGraph_demo.h"
 #include "LG_internal.h"
 #include "LAGraphX.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 // #define VERBOSE
 
 #define NTHREAD_LIST 1
@@ -272,3 +275,7 @@ int main (int argc, char** argv)
     LAGRAPH_TRY (LAGraph_Finalize (msg)) ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

@@ -21,7 +21,10 @@
 #define LG_FREE_WORK GrB_free (&C) ;
 
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 //------------------------------------------------------------------------------
 // LAGraph_Matrix_IsEqualOp: compare two matrices using a given operator
 //------------------------------------------------------------------------------
@@ -121,3 +124,7 @@ int LAGraph_Matrix_IsEqualOp
     LG_FREE_WORK ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

@@ -33,7 +33,9 @@
 
 #ifndef GB_CPU_FEATURES_H
 #define GB_CPU_FEATURES_H
-
+#ifdef __QNX__
+#define GBNCPUFEAT 1
+#endif
 #if !defined ( GBNCPUFEAT )
     #include "cpu_features_macros.h"
     #define STACK_LINE_READER_BUFFER_SIZE 1024

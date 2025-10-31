@@ -36,7 +36,10 @@
 
 #include "LG_internal.h"
 #include "LG_test.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 int LG_check_ktruss
 (
     // output
@@ -178,3 +181,7 @@ int LG_check_ktruss
         GRB_TRY (GrB_free (&C)) ;
     }
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

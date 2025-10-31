@@ -24,7 +24,10 @@
 #include "../../src/benchmark/LAGraph_demo.h"
 #include "LAGraphX.h"
 #include "LG_Xtest.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #define NTHREAD_LIST 1
 #define THREAD_LIST 0
 
@@ -162,3 +165,7 @@ int main (int argc, char **argv)
     LAGRAPH_TRY (LAGraph_Finalize (msg)) ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

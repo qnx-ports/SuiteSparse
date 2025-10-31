@@ -55,7 +55,10 @@
 #include "LG_internal.h"
 
 static double timings [16] ;
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #if LG_SUITESPARSE_GRAPHBLAS_V10
 
 //==============================================================================
@@ -940,3 +943,7 @@ int LG_CC_FastSV7           // SuiteSparse:GraphBLAS method, with GraphBLAS v10
     LG_ASSERT (false, GrB_NOT_IMPLEMENTED) ;
 #endif
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

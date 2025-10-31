@@ -29,7 +29,10 @@
 //
 #include "LAGraphX.h"
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #undef  LG_FREE_ALL
 #define LG_FREE_ALL                             \
 {                                               \
@@ -146,4 +149,7 @@ int main (int argc, char **argv)
     LAGRAPH_TRY (LAGraph_Finalize (msg)) ;
     return (GrB_SUCCESS) ;
 }
-
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

@@ -26,7 +26,10 @@ matrices using specified configurations and seeds with LAGraph_Random_Matrix
 #include "LAGraph_test.h"
 #include "LG_Xtest.h"
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 char msg [LAGRAPH_MSG_LEN] ;
 
 GrB_Matrix A = NULL, A_coarse_LAGraph = NULL, A_coarse_naive = NULL ;
@@ -339,3 +342,7 @@ TEST_LIST = {
     {"Coarsen_Matching_NullInputs", test_Coarsen_Matching_NullInputs},
     {NULL, NULL}
 } ;
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

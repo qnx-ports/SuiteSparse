@@ -65,6 +65,10 @@
 #include "LG_internal.h"
 #include "LAGraphX.h"
 
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 //------------------------------------------------------------------------------
 // C = LAGraph_AllKTruss: find all k-trusses a graph
 //------------------------------------------------------------------------------
@@ -196,3 +200,7 @@ int LAGraph_AllKTruss   // compute all k-trusses of a graph
         }
     }
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

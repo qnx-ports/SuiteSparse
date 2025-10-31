@@ -26,7 +26,10 @@ matrices using specified configurations and seeds with LAGraph_Random_Matrix
 #include <LAGraphX.h>
 #include <LAGraph_test.h>
 #include <LG_Xtest.h>
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 GrB_Vector matching = NULL , weight = NULL, node_degree = NULL, hop_nodes = NULL, hop_edges = NULL ;
 GrB_Matrix A = NULL, E = NULL, E_t = NULL ;
 LAGraph_Graph G = NULL ;
@@ -276,3 +279,7 @@ TEST_LIST = {
     { "MaximalMatchingErrors", test_MaximalMatchingErrors },
     { NULL, NULL }
 } ;
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

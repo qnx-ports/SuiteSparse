@@ -17,7 +17,11 @@
 
 #include "LAGraph_test.h"
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
+// #unde
 //------------------------------------------------------------------------------
 // global variables
 //------------------------------------------------------------------------------
@@ -780,3 +784,7 @@ TEST_LIST =
     { "array_pattern", test_array_pattern },
     { NULL, NULL }
 } ;
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

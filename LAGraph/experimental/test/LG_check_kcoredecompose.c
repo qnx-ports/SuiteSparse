@@ -40,7 +40,10 @@
 #include "LG_internal.h"
 #include "LG_test.h"
 #include "LG_Xtest.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 int LG_check_kcore_decompose
 (
     // outputs:
@@ -119,4 +122,7 @@ int LG_check_kcore_decompose
     GRB_TRY (GrB_Matrix_wait(*D, GrB_MATERIALIZE));
     return (GrB_SUCCESS);
 }
-
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

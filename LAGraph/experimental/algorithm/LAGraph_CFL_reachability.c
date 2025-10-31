@@ -39,7 +39,10 @@
 
 #include "LG_internal.h"
 #include <LAGraphX.h>
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #define ERROR_RULE(msg,i)                                                   \
     {                                                                       \
         LG_ASSERT_MSGF(false, GrB_INVALID_VALUE,                            \
@@ -382,3 +385,7 @@ GrB_Info LAGraph_CFL_reachability
     return (GrB_NOT_IMPLEMENTED) ;
 #endif
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

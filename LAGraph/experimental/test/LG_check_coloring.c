@@ -4,7 +4,10 @@
 #include "LG_internal.h"
 #include "LG_test.h"
 #include "LG_Xtest.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #undef  LG_FREE_WORK
 #define LG_FREE_WORK                            \
 {                                               \
@@ -90,3 +93,7 @@ int LG_check_coloring
     return (GrB_NOT_IMPLEMENTED) ;
 #endif
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

@@ -80,7 +80,10 @@
 #include "LG_internal.h"
 #include <LAGraph.h>
 #include <LAGraphX.h>
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 //------------------------------------------------------------------------------
 
 #define F_UNARY(f)  ((void (*)(void *, const void *)) f)
@@ -284,3 +287,7 @@ int LAGraph_lcc            // compute lcc for all nodes in A
     LG_FREE_ALL ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

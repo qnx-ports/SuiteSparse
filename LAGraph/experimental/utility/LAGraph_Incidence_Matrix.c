@@ -36,7 +36,10 @@ Note that complex types are NOT supported.
 
 #define LOADTRICKIM
 //#define dbg
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #undef LG_FREE_ALL
 #define LG_FREE_ALL                                           \
 {                                                             \
@@ -282,3 +285,7 @@ int LAGraph_Incidence_Matrix
     return (GrB_NOT_IMPLEMENTED) ;
 #endif
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

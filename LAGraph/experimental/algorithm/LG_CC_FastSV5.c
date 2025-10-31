@@ -50,7 +50,10 @@
 #include "LG_internal.h"
 
 // TODO: not ready for src; need a vanilla method with no GxB
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #if LAGRAPH_SUITESPARSE
 
 //------------------------------------------------------------------------------

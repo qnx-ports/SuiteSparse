@@ -4,7 +4,10 @@
 #include <LG_test.h>
 #include <LAGraphX.h>
 #include <LAGraph_test.h>
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #define LEN 512
 #define MAX_LABELS 3
 #define MAX_RESULTS 2000000
@@ -227,3 +230,7 @@ TEST_LIST = {
     {"RegularPathQueryBasic", test_RegularPathQueryBasic},
     {NULL, NULL}
 };
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

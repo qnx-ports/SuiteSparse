@@ -47,7 +47,10 @@
 }
 
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 int LAGr_PageRankGX
 (
     // output:

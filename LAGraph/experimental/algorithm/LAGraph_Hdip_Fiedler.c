@@ -44,6 +44,10 @@ The happly function, applies a Householder Reflection
     Acknowledgements: Michel Pelletier provided us with many helpful suggestions and assistance while developing this algorithm
 
 */
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 int LAGraph_Happly //happly Checked for pointer issues
 (
     //outputs:
@@ -754,4 +758,7 @@ int LAGraph_Hdip_Fiedler   // compute the Hdip_Fiedler
     return (GrB_NOT_IMPLEMENTED) ;
 #endif
 }
-
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

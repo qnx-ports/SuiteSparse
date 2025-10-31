@@ -30,7 +30,10 @@
 
 #include "LG_internal.h"
 #include "LAGraphX.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 //------------------------------------------------------------------------------
 // json.h: JSON parser
 //------------------------------------------------------------------------------
@@ -372,3 +375,7 @@ int LAGraph_SRead   // read a set of matrices from a *.lagraph file
     (*ncontents_handle) = ncontents ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

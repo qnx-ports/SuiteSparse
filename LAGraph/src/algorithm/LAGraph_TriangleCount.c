@@ -23,7 +23,10 @@
 #include <LAGraph.h>
 #include "LG_internal.h"
 #include "LG_alg_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 // Pick the default method with auto presort.  Compute G->nself_edges, and
 // G->out_degree if needed.  Determine if G->A is symmetric, if not known.
 
@@ -44,3 +47,7 @@ int LAGraph_TriangleCount
     // auto method and auto sort
     return (LAGr_TriangleCount (ntriangles, G, NULL, NULL, msg)) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

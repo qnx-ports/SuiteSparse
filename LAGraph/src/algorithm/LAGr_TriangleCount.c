@@ -65,7 +65,10 @@
 }
 
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 //------------------------------------------------------------------------------
 // tricount_prep: construct L and U for LAGr_TriangleCount
 //------------------------------------------------------------------------------
@@ -360,3 +363,7 @@ int LAGr_TriangleCount
     (*ntriangles) = (uint64_t) ntri ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

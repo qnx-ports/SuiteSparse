@@ -24,7 +24,11 @@
 #include <graph_zachary_karate.h>
 #include "LG_alg_internal.h"
 #include "LAGraphX.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
+// #unde
 char msg[LAGRAPH_MSG_LEN];
 LAGraph_Graph G = NULL;
 
@@ -772,3 +776,7 @@ TEST_LIST = {
     {"BreadthFirstSearch_Extended", test_BreadthFirstSearch_Extended},
     {NULL, NULL}
 } ;
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

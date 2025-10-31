@@ -1,7 +1,10 @@
 #include "../../src/benchmark/LAGraph_demo.h"
 #include "LG_internal.h"
 #include "LAGraphX.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #define DEFAULT_SIZE 2000
 #define DEFAULT_DENSITY 0.7
 #define DEFAULT_SEED 42
@@ -79,3 +82,7 @@ int main(int argc, char **argv)
     LG_TRY (LAGraph_Finalize (msg)) ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

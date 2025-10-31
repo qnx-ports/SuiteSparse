@@ -20,7 +20,10 @@
 // bc_demo matrixfile.mtx sourcenodes.mtx
 
 #include "LAGraph_demo.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 // NTHREAD_LIST and THREAD_LIST are used together to select the # of OpenMP
 // threads to use in this demo.  If THREAD_LIST is zero, then the # of threads
 // is chosen automatically.  Let p = omp_get_max_threads ( ).  Then if
@@ -223,3 +226,7 @@ for (int nrepeat = 0 ; nrepeat <= 1 ; nrepeat++)
     LAGRAPH_TRY (LAGraph_Finalize (msg)) ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

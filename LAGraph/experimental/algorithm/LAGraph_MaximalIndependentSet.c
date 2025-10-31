@@ -38,7 +38,10 @@
 
 #include "LG_internal.h"
 #include "LAGraphX.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 // A variant of Luby's randomized algorithm [Luby 1985].
 
 // Given a numeric n x n adjacency matrix A of an unweighted and undirected
@@ -319,3 +322,7 @@ int LAGraph_MaximalIndependentSet       // maximal independent set
     LG_FREE_WORK ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

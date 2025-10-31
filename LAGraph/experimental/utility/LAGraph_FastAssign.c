@@ -59,6 +59,11 @@
 
 #include "LG_internal.h"
 #include "LAGraphX.h"
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
+
 #if LG_SUITESPARSE_GRAPHBLAS_V10
 
 // Uncomment if you would like to use the monoid version of FastAssign.
@@ -262,4 +267,8 @@ int LAGraph_FastAssign_Semiring
     GrB_free(&con) ;
     return (GrB_SUCCESS) ;
 }
+#endif
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
 #endif

@@ -50,7 +50,10 @@
 }
 
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 int LAGr_SortByDegree
 (
     // output:
@@ -165,3 +168,7 @@ int LAGr_SortByDegree
     (*P_handle) = P ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

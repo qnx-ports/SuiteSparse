@@ -75,6 +75,10 @@
 
 #include "LG_internal.h"
 #include "LAGraphX.h"
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 void LG_SE_shift_and 
     (uint16_t *z, const uint16_t *x)
     {

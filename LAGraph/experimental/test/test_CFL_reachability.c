@@ -16,7 +16,10 @@
 #include <LG_test.h>
 #include <acutest.h>
 #include <stdio.h>
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #define run_algorithm()                                                                  \
     LAGraph_CFL_reachability(outputs, adj_matrices, grammar.terms_count,                 \
                              grammar.nonterms_count, grammar.rules, grammar.rules_count, \
@@ -677,3 +680,7 @@ TEST_LIST = {{"CFL_reachability_complex_grammar", test_CFL_reachability_complex_
              #endif
              {NULL, NULL}};
 
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

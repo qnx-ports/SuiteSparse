@@ -26,7 +26,10 @@
 #include "LG_internal.h"
 #include <LAGraph.h>
 #include <LAGraphX.h>
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #define LG_XSTR(x) LG_STR(x)
 #define LG_STR(x) #x
 #define LG_SOURCE_DIR LG_XSTR (LGDIR)
@@ -576,3 +579,7 @@ int main (int argc, char **argv)
     printf ("all tests passed\n") ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

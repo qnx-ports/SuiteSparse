@@ -78,7 +78,10 @@
 #include <LG_internal.h>  // from src/utility
 
 typedef void (*LAGraph_binary_function) (void *, const void *, const void *) ;
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 //------------------------------------------------------------------------------
 // data type for each entry of the adjacent matrix A and "distance" vector d;
 // <INFINITY,INFINITY,INFINITY> corresponds to nonexistence of a path, and
@@ -335,3 +338,7 @@ GrB_Info LAGraph_BF_full_mxv
     LG_FREE_WORK;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

@@ -20,7 +20,10 @@
 #include <LG_test.h>
 
 #include <graph_zachary_karate.h>
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 char msg[LAGRAPH_MSG_LEN];
 LAGraph_Graph G = NULL;
 
@@ -174,3 +177,7 @@ TEST_LIST = {
     {"FastGraphletTransform", test_FastGraphletTransform},
     {NULL, NULL}
 };
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

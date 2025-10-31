@@ -19,7 +19,10 @@
 #include "LG_internal.h"
 #include "LG_test.h"
 #include "LG_Xtest.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #undef LG_FREE_WORK
 #undef LG_FREE_ALL
 
@@ -270,3 +273,7 @@ int LG_check_rcc
     #endif
 }
 #undef TIMINGS
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

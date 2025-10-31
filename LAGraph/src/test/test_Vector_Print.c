@@ -16,7 +16,10 @@
 //-----------------------------------------------------------------------------
 
 #include "LAGraph_test.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 char msg [LAGRAPH_MSG_LEN] ;
 GrB_Vector v = NULL ;
 GrB_Index n = 40 ;
@@ -216,3 +219,7 @@ TEST_LIST = {
     #endif
     {NULL, NULL}
 };
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

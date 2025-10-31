@@ -19,7 +19,11 @@
 #include <acutest.h>
 
 #include <LAGraph_test.h>
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
+// #unde
 #define LEN 512
 char msg [LAGRAPH_MSG_LEN] ;
 char filename [LEN+1] ;
@@ -325,3 +329,7 @@ TEST_LIST = {
     #endif
     {NULL, NULL}
 };
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

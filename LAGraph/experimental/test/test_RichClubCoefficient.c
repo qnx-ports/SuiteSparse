@@ -22,7 +22,10 @@
 #include <LAGraph_test.h>
 #include <LG_Xtest.h>
 #include <LG_test.h>
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 char msg [LAGRAPH_MSG_LEN] ;
 
 GrB_Matrix A = NULL, C = NULL;
@@ -402,3 +405,7 @@ TEST_LIST =
     #endif
     {NULL, NULL}
 } ;
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

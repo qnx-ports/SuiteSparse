@@ -62,7 +62,10 @@
 
 #include "LG_internal.h"
 #include "LAGraphX.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 typedef void (*LAGraph_binary_function) (void *, const void *, const void *) ;
 
 #define ISEQ_2ISLT                                                          \
@@ -401,3 +404,7 @@ int LAGraph_RichClubCoefficient
     LG_FREE_WORK ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

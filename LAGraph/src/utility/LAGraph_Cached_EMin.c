@@ -21,7 +21,10 @@
 }
 
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 int LAGraph_Cached_EMin
 (
     // input/output:
@@ -79,3 +82,7 @@ int LAGraph_Cached_EMin
     G->emin_state = LAGraph_VALUE ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

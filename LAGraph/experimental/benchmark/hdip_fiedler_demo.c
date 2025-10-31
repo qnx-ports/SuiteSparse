@@ -14,7 +14,10 @@
 #include "../../src/benchmark/LAGraph_demo.h"
 #include "LAGraphX.h"
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 float difference (GrB_Vector centrality, double *matlab_result) ;
 
 float difference (GrB_Vector centrality, double *matlab_result)
@@ -445,3 +448,7 @@ int main(int argc, char **argv)
     LG_TRY(LAGraph_Finalize(msg));
     return (GrB_SUCCESS);
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

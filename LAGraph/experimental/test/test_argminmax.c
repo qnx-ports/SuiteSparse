@@ -23,7 +23,10 @@
 #include <LG_test.h>
 #include <LAGraph.h>
 #include <LG_internal.h>
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 char msg [LAGRAPH_MSG_LEN] ;
 
 #define LEN 512
@@ -202,4 +205,7 @@ TEST_LIST =
     {"argminmax_errors", test_argminmax_errors},
     {NULL, NULL}
 } ;
-
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

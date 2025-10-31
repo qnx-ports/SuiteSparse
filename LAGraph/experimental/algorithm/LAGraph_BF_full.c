@@ -57,7 +57,10 @@
 #include <LAGraph.h>
 #include <LAGraphX.h>
 #include <LG_internal.h>  // from src/utility
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 typedef void (*LAGraph_binary_function) (void *, const void *, const void *) ;
 
 //------------------------------------------------------------------------------
@@ -306,3 +309,7 @@ GrB_Info LAGraph_BF_full
     LG_FREE_ALL;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

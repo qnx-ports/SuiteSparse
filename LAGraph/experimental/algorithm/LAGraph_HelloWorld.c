@@ -52,7 +52,10 @@
 
 #include "LG_internal.h"
 #include "LAGraphX.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 int LAGraph_HelloWorld // a simple algorithm, just for illustration
 (
     // output
@@ -97,3 +100,7 @@ int LAGraph_HelloWorld // a simple algorithm, just for illustration
     (*Yhandle) = Y ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

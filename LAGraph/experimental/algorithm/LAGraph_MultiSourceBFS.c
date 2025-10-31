@@ -30,7 +30,10 @@
 
 #include "LG_internal.h"
 #include "LAGraphX.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 int LAGraph_MultiSourceBFS
 (
     // outputs:
@@ -218,3 +221,7 @@ int LAGraph_MultiSourceBFS
     return (GrB_NOT_IMPLEMENTED) ;
 #endif
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

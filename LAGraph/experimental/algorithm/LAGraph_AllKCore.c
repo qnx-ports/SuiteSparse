@@ -35,6 +35,11 @@
 
 #include "LG_internal.h"
 
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
+
 // TODO: need both basic and expert methods; this is mixed
 // TODO: match filename to function name (this name is OK)
 // vanilla OK: no GxB used here
@@ -158,3 +163,7 @@ int LAGraph_KCore_All
     LG_FREE_WORK ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

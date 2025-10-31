@@ -47,7 +47,10 @@
 }
 
 #include "LG_alg_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #ifdef LG_BFS_EXTENDED
 int LG_BreadthFirstSearch_SSGrB_Extended
 (
@@ -353,3 +356,7 @@ int LG_BreadthFirstSearch_SSGrB
     return (GrB_NOT_IMPLEMENTED) ;
 #endif
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

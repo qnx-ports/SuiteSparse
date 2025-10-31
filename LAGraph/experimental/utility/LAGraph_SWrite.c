@@ -17,7 +17,10 @@
 
 #include "LG_internal.h"
 #include "LAGraphX.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #define FPRINT(params)                                  \
 {                                                       \
     int result = fprintf params ;                       \
@@ -170,3 +173,7 @@ int LAGraph_SWrite_Item  // write the serialized blob of a matrix/vector/text
         "file not written properly") ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

@@ -46,7 +46,10 @@
 
 #include "LG_internal.h"
 #include <LAGraphX.h>
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 int LAGr_PartitionQuality(
     // Outputs
     double *cov,  // coverage output, can be NULL

@@ -33,7 +33,10 @@
 }
 
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 // TODO: need both basic and expert; this is advanced
 // TODO: this should return D as an LAGraph_Graph, not as a GrB_Matrix
 
@@ -107,3 +110,7 @@ int LAGraph_KCore_Decompose
     return (GrB_NOT_IMPLEMENTED) ;
 #endif
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

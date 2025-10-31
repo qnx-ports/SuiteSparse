@@ -16,6 +16,10 @@
 //-----------------------------------------------------------------------------
 
 #include "LAGraph_test.h"
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 char msg [LAGRAPH_MSG_LEN] ;
 
 //-----------------------------------------------------------------------------
@@ -119,3 +123,7 @@ TEST_LIST = {
     // no brutal test needed
     {NULL, NULL}
 };
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

@@ -44,7 +44,10 @@
 
 #include "LG_internal.h"
 #include "LAGraphX.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 //****************************************************************************
 GrB_Info LAGraph_dnn    // returns GrB_SUCCESS if successful
 (
@@ -113,3 +116,7 @@ GrB_Info LAGraph_dnn    // returns GrB_SUCCESS if successful
     (*Yhandle) = Y ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

@@ -47,7 +47,10 @@
 }
 
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 int LAGr_PageRank
 (
     // output:
@@ -183,3 +186,7 @@ int LAGr_PageRank
     LG_FREE_WORK ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

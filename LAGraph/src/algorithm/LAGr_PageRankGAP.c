@@ -62,6 +62,10 @@ int LAGr_PageRankGAP
 )
 {
 
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
     //--------------------------------------------------------------------------
     // check inputs
     //--------------------------------------------------------------------------
@@ -141,7 +145,10 @@ int LAGr_PageRankGAP
         // rdiff = sum (t)
         GRB_TRY (GrB_reduce (&rdiff, NULL, GrB_PLUS_MONOID_FP32, t, NULL)) ;
     }
-
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif
     //--------------------------------------------------------------------------
     // free workspace and return result
     //--------------------------------------------------------------------------

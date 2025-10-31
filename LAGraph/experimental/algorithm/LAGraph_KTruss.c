@@ -37,7 +37,10 @@
 #define LG_FREE_ALL GrB_free (&C) ;
 #include "LG_internal.h"
 #include "LAGraphX.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 //------------------------------------------------------------------------------
 // LAGraph_KTruss: find the k-truss subgraph of a graph
 //------------------------------------------------------------------------------
@@ -114,3 +117,7 @@ int LAGraph_KTruss              // compute the k-truss of a graph
         S = C ;
     }
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

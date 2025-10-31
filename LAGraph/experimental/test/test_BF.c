@@ -20,7 +20,10 @@
 #include <LAGraphX.h>
 #include <LAGraph_test.h>
 #include <LG_Xtest.h>
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 //------------------------------------------------------------------------------
 // globals
 //------------------------------------------------------------------------------
@@ -513,3 +516,7 @@ TEST_LIST =
     { "test_BF", test_BF },
     { NULL, NULL }
 } ;
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

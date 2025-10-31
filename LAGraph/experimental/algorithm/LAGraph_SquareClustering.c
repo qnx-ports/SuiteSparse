@@ -95,7 +95,10 @@
 #include <LAGraph.h>
 #include <LAGraphX.h>
 #include <LG_internal.h>  // from src/utility
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 int LAGraph_SquareClustering
 (
     // outputs:
@@ -225,3 +228,7 @@ int LAGraph_SquareClustering
     LG_FREE_WORK ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

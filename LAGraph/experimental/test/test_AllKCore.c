@@ -186,3 +186,7 @@ TEST_LIST = {
     {"AllKCore_errors", test_errors},
     {NULL, NULL}
 };
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

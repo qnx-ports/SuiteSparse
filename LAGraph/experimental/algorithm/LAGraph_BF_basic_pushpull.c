@@ -47,7 +47,10 @@
 #include <LAGraphX.h>
 #include <LG_internal.h>  // from src/utility
 
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 // Given a n-by-n adjacency matrix A and a source vertex s.
 // If there is no negative-weight cycle reachable from s, return the distances
 // of shortest paths from s as vector d. Otherwise, return d=NULL if there is
@@ -228,3 +231,7 @@ GrB_Info LAGraph_BF_basic_pushpull
     LG_FREE_ALL;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

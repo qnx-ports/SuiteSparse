@@ -28,7 +28,10 @@
 
 #undef  LG_FREE_ALL
 #define LG_FREE_ALL LG_FREE_WORK
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 //------------------------------------------------------------------------------
 // LG_Vector_Print_TYPE: print with the specified type
 //------------------------------------------------------------------------------
@@ -160,4 +163,7 @@ int LAGraph_Vector_Print
             return (GrB_NOT_IMPLEMENTED) ;
     }
 }
-
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

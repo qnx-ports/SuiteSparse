@@ -46,7 +46,10 @@
 #include "LG_internal.h"
 #include <LAGraphX.h>
 #include "LG_Xtest.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 
 //------------------------------------------------------------------------------
 // test the results from a Edge Betweenness Centrality
@@ -392,3 +395,7 @@ GrB_Info GxB_Matrix_pack_FullR  // pack a full matrix, held by row
     return (GrB_NOT_IMPLEMENTED) ;
 #endif
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

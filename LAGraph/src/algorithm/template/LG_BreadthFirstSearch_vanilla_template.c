@@ -32,7 +32,10 @@
 }
 
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #ifdef LG_BFS_EXTENDED
 int LG_BreadthFirstSearch_vanilla_Extended
 (
@@ -207,3 +210,7 @@ int LG_BreadthFirstSearch_vanilla
     LG_FREE_WORK ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

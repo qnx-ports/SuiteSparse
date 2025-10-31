@@ -75,7 +75,10 @@
 #include <LAGraphX.h>
 #include <stdalign.h>
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 // A Go-style slice / Lisp-style property list
 typedef struct {
     GrB_Index* entries;
@@ -342,3 +345,7 @@ int LAGraph_cdlp
 
     return (GrB_SUCCESS);
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

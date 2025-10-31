@@ -62,7 +62,10 @@ This method requires O(n + e) space for an undirected graph with e edges and n n
 
 // #define dbg
 // #define burble
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #undef LG_FREE_ALL
 #undef LG_FREE_WORK
 
@@ -507,4 +510,7 @@ int LAGraph_Coarsen_Matching
     return (GrB_NOT_IMPLEMENTED) ;
 #endif
 }
-
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

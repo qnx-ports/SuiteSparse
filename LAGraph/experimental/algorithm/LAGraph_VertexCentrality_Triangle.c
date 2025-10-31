@@ -85,7 +85,10 @@
 }
 
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 //------------------------------------------------------------------------------
 // LAGraph_VertexCentrality_Triangle: vertex triangle-centrality
 //------------------------------------------------------------------------------
@@ -319,3 +322,7 @@ int LAGraph_VertexCentrality_Triangle       // vertex triangle-centrality
     LG_FREE_WORK ;
     return (GrB_SUCCESS) ;
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

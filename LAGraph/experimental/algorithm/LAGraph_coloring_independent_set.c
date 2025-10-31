@@ -1,6 +1,9 @@
 #include "LG_internal.h" // contains all internal grb operations
 #include "LAGraphX.h"    // algorithm added to LAGraphX.h
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #undef  LG_FREE_WORK
 #define LG_FREE_WORK                \
     GrB_free (&local_color) ;       \
@@ -109,3 +112,7 @@ int LAGraph_coloring_independent_set
     return (GrB_NOT_IMPLEMENTED) ;
 #endif
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

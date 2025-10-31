@@ -16,7 +16,10 @@
 //------------------------------------------------------------------------------
 
 #include "LAGraph_test.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 //------------------------------------------------------------------------------
 // global variables
 //------------------------------------------------------------------------------
@@ -60,3 +63,7 @@ TEST_LIST =
     // no brutal test: see test_Xinit
     { NULL, NULL }
 } ;
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

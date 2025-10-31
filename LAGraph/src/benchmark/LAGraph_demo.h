@@ -21,7 +21,10 @@
 #include <LAGraph.h>
 #include <LG_test.h>
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #if defined ( __linux__ )
 // for mallopt
 #include <malloc.h>
@@ -1165,4 +1168,8 @@ static inline int demo_init (bool burble)
 }
 
 #undef  LG_FREE_ALL
+#endif
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
 #endif

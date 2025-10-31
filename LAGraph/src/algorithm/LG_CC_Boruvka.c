@@ -28,7 +28,10 @@
 #include <stdint.h>
 
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 //------------------------------------------------------------------------------
 // Reduce_assign
 //------------------------------------------------------------------------------
@@ -283,4 +286,7 @@ int LG_CC_Boruvka
     LG_FREE_WORK ;
     return (GrB_SUCCESS) ;
 }
-
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

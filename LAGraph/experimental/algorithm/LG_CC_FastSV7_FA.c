@@ -57,7 +57,10 @@
 #define LG_FREE_ALL ;
 #include "LG_internal.h"
 #include "LAGraphX.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 static double timings [16] ;
 
 #if LG_SUITESPARSE_GRAPHBLAS_V10

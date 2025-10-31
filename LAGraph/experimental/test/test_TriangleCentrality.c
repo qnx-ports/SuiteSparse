@@ -21,7 +21,10 @@
 
 #include <LAGraphX.h>
 #include <LAGraph_test.h>
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 char msg [LAGRAPH_MSG_LEN] ;
 LAGraph_Graph G = NULL ;
 GrB_Matrix A = NULL ;
@@ -188,3 +191,7 @@ TEST_LIST = {
     {"TriangleCentrality_errors", test_errors},
     {NULL, NULL}
 };
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

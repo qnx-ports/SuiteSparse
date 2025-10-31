@@ -136,7 +136,10 @@
 #include <LAGraph.h>
 #include <LAGraphX.h>
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 //****************************************************************************
 int LAGraph_cdlp_withsort
 (
@@ -329,3 +332,7 @@ int LAGraph_cdlp_withsort
 
     return (GrB_SUCCESS);
 }
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif

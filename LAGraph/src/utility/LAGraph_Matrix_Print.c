@@ -18,7 +18,10 @@
 // LAGraph_Matrix_Print:  pretty-print a matrix.
 
 #include "LG_internal.h"
-
+#ifdef __QNX__
+#undef _INT32
+#undef _UINT32
+#endif
 #undef  LG_FREE_WORK
 #define LG_FREE_WORK                    \
 {                                       \
@@ -159,4 +162,7 @@ int LAGraph_Matrix_Print
             return (GrB_NOT_IMPLEMENTED) ;
     }
 }
-
+#ifdef __QNX__
+#define _INT32 int
+#define _UINT32 unsigned
+#endif
