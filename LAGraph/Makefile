@@ -76,7 +76,7 @@ vanilla_debug:
 all: library
 
 test: library
-	( cd build && ctest . || ctest . --rerun-failed --output-on-failure )
+	( cd build && ctest -j1 || ctest -j1 --rerun-failed --output-on-failure )
 
 verbose_test: library
 	( cd build && ctest . --verbose || ctest . --rerun-failed --output-on-failure )

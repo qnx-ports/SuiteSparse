@@ -113,7 +113,7 @@ ilarge: library
 	./build/cholmod_si_simple < ~/nd12k.mtx > ./build/si_nd12k.out.txt
 
 test: library
-	( cd build && ctest . || ctest . --rerun-failed --output-on-failure )
+	( cd build && ctest -j1 || ctest -j1 --rerun-failed --output-on-failure )
 
 cov:
 	( cd Tcov && $(MAKE) )
